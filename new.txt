@@ -1,0 +1,82 @@
+The "new" operator lets you create an instance of a user-defined object 
+or one of the built in object types that has a constructor function.
+
+Ex: 
+
+The "new" keyword does the following things:
+1. Creates a blank Javascript object
+2. Adds a property to the new object that links to the constructor 
+function's prototype object
+3. Binds the newly created object instance as the "this" context (all 
+references to "this" in the constructor function now refers to the 
+object created in the first step).
+4. Returns "this" if the function doesn't return an object
+
+Creating a user-defined object requires two steps:
+1. Define the object type by writing a function that specifies its name 
+and properties. For example, a constructor function to create an object 
+Person might look like this:
+
+Ex:
+
+2. Create an instance of the object with "new".
+
+Ex:
+
+***An object can have a property that is itself another object
+
+
+When the code new Person(...) is executed, the following happens:
+1. A new object is created, inheriting from Person.prototype
+2. The constructor function Person is called with the specified arguments 
+and with "this" bound to the newly created object. new Person is equivalent 
+to new Person().(If no argument list is specified, Person is called without 
+arguments)
+3. The object return by the constructor function becomes the result of the 
+whole "new" expression. If the constructor function doesn't explicitly 
+return an object, the object created in step 1 is used instead (normally 
+constructors don't return a value, but they can choose to do so if they want 
+to override the normal object creation process).
+
+You can always add a property to a previously defined object instance:
+Ex:
+
+You can add a shared property to a previously defined object type by using 
+the Function.prototype property. This defines a property that is shared by 
+all objects created with that function, rather than by just one instance of 
+the object type. The following code adds a language property with value 
+"English" to all objects of type Person and then overwrites that value with 
+the string "English" only in an instance object that already defines language 
+as a property.
+
+Ex:
+
+Suppose you want to create an object type of Person. You want this type of 
+object to be called Person and you want it to have properties for name, age 
+and sex. To do this, you would write the following function:
+
+Ex:
+
+Now I'll create one object called andres as follows:
+Ex:
+
+
+This statement creates andres and assigns it the specified values for its 
+properties. Then the value of andres.name is the string "Andres" and the 
+value of andres.age is the number 21 and so on...
+
+You can create any number of Person object by calls to new.
+Lets instantiate two new Person objects as follows:
+Ex:
+
+
+Then you can rewrite the definition of Person to include a sibling property 
+that takes a Sibling as an object as follows:
+Ex:
+
+To instantiate the new objects, you then use the following:
+Ex:
+
+
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new
